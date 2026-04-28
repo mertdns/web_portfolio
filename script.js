@@ -1,14 +1,9 @@
-// ============================
-// DOM Elements
-// ============================
 const header = document.getElementById('header');
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// ============================
-// Navigation Toggle (Mobile)
-// ============================
+
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -24,9 +19,7 @@ navLinks.forEach(link => {
     });
 });
 
-// ============================
 // Header Scroll Effect
-// ============================
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
@@ -42,9 +35,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ============================
 // Smooth Scroll for Anchor Links
-// ============================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -62,9 +53,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ============================
 // Intersection Observer for Fade-in Animation
-// ============================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -84,9 +73,7 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// ============================
 // Active Navigation Link
-// ============================
 const sections = document.querySelectorAll('section[id]');
 
 window.addEventListener('scroll', () => {
@@ -108,9 +95,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ============================
 // Add CSS for Fade-in Animation
-// ============================
 const style = document.createElement('style');
 style.textContent = `
     .fade-in {
