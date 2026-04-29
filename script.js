@@ -2,21 +2,48 @@ const header = document.getElementById('header');
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.querySelectorAll('.nav-link');
+const navBackdrop = document.getElementById('nav-backdrop');
 
+// Toggle mobile menu
+function openMenu() {
+    navMenu.classList.add('active');
+    navToggle.classList.add('active');
+    navBackdrop.classList.add('active');
+    document.body.classList.add('menu-open');
+}
+
+function closeMenu() {
+    navMenu.classList.remove('active');
+    navToggle.classList.remove('active');
+    navBackdrop.classList.remove('active');
+    document.body.classList.remove('menu-open');
+}
 
 if (navToggle) {
     navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
+        if (navMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
+}
+
+// Close menu when clicking backdrop
+if (navBackdrop) {
+    navBackdrop.addEventListener('click', closeMenu);
 }
 
 // Close menu when clicking a link
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
+    link.addEventListener('click', closeMenu);
+});
+
+// Close menu on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        closeMenu();
+    }
 });
 
 // Header Scroll Effect
